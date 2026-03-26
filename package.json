@@ -1,0 +1,29 @@
+{
+  "name": "abhinav-sign-print",
+  "version": "1.0.0",
+  "description": "Modern Abhinav Sign & Print website with React, Vite, and Tailwind CSS",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js,jsx",
+    "optimize:machines": "node scripts/optimize-machine-images.mjs"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-router-dom": "^6.21.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.0",
+    "postcss": "^8.4.32",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.0"
+  }
+}
