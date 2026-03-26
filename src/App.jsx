@@ -99,6 +99,45 @@ const clientLogos = [
 ]
 
 function App() {
+  const handleAnchorClick = (event) => {
+    const href = event.currentTarget.getAttribute('href')
+    if (!href || !href.startsWith('#')) {
+      return
+    }
+
+    const target = document.querySelector(href)
+    if (!target) {
+      return
+    }
+
+    event.preventDefault()
+
+    const startY = window.scrollY
+    const targetY = target.getBoundingClientRect().top + window.scrollY - 88
+    const distance = targetY - startY
+    const duration = 900
+    const startTime = performance.now()
+
+    const easeInOutCubic = (progress) =>
+      progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - ((-2 * progress + 2) ** 3) / 2
+
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const easedProgress = easeInOutCubic(progress)
+
+      window.scrollTo(0, startY + distance * easedProgress)
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step)
+      }
+    }
+
+    window.requestAnimationFrame(step)
+  }
+
   const trimHeroVideoStart = (event) => {
     const video = event.currentTarget
     video.currentTime = Math.min(HERO_VIDEO_START_TIME, video.duration || HERO_VIDEO_START_TIME)
@@ -134,10 +173,10 @@ function App() {
             </span>
           </a>
           <nav className="nav-links" aria-label="Primary navigation">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#clients">Clients</a>
-            <a href="#contact">Contact</a>
+            <a href="#about" onClick={handleAnchorClick}>About</a>
+            <a href="#services" onClick={handleAnchorClick}>Services</a>
+            <a href="#clients" onClick={handleAnchorClick}>Clients</a>
+            <a href="#contact" onClick={handleAnchorClick}>Contact</a>
           </nav>
         </div>
       </header>
@@ -172,7 +211,7 @@ function App() {
                 We don’t just make signboards, we build brand visibility.
               </p>
               <div className="hero-actions">
-                <a className="primary-btn" href="#contact">
+                <a className="primary-btn" href="#contact" onClick={handleAnchorClick}>
                   Get a Free Quote
                 </a>
                 <a className="secondary-btn" href={`tel:${PRIMARY_PHONE}`}>
