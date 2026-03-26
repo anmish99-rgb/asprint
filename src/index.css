@@ -1329,6 +1329,11 @@ textarea:focus-visible {
     align-items: center;
   }
 
+  .footer-row {
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .brand {
     align-items: center;
   }
