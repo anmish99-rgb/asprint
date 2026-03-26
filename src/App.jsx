@@ -111,31 +111,11 @@ function App() {
     }
 
     event.preventDefault()
-
-    const startY = window.scrollY
-    const targetY = target.getBoundingClientRect().top + window.scrollY - 88
-    const distance = targetY - startY
-    const duration = 900
-    const startTime = performance.now()
-
-    const easeInOutCubic = (progress) =>
-      progress < 0.5
-        ? 4 * progress * progress * progress
-        : 1 - ((-2 * progress + 2) ** 3) / 2
-
-    const step = (currentTime) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      const easedProgress = easeInOutCubic(progress)
-
-      window.scrollTo(0, startY + distance * easedProgress)
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step)
-      }
-    }
-
-    window.requestAnimationFrame(step)
+    window.history.replaceState(null, '', href)
+    target.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start',
+    })
   }
 
   const trimHeroVideoStart = (event) => {
