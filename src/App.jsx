@@ -91,11 +91,11 @@ const machines = [
 ]
 
 const clientLogos = [
-  '/Clients/Amul.webp',
-  '/Clients/MSME.webp',
-  '/Clients/AMRITA_Hospital.webp',
-  '/Clients/Hype-the-gym.webp',
-  '/Clients/Radisson.webp',
+  '/clients/Amul.webp',
+  '/clients/MSME.webp',
+  '/clients/AMRITA_Hospital.webp',
+  '/clients/Hype-the-gym.webp',
+  '/clients/Radisson.webp',
 ]
 
 function App() {
@@ -192,7 +192,7 @@ function App() {
                   onLoadedMetadata={trimHeroVideoStart}
                   onEnded={loopHeroVideoFromTrimmedStart}
                 >
-                  <source src="/stickman%20(online-video-cutter.com).mp4" type="video/mp4" />
+                  <source src="/hero-video.mp4" type="video/mp4" />
                 </video>
               </div>
               <div className="hero-stat-grid">
